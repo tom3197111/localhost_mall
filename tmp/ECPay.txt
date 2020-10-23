@@ -1,0 +1,21 @@
+Array
+(
+    [CustomField1] => 
+    [CustomField2] => 
+    [CustomField3] => 
+    [CustomField4] => 
+    [MerchantID] => 2000132
+    [MerchantTradeNo] => Test1602658793
+    [PaymentDate] => 2020/10/14 15:00:21
+    [PaymentType] => Credit_CreditCard
+    [PaymentTypeChargeFee] => 122
+    [RtnCode] => 1
+    [RtnMsg] => 交易成功
+    [SimulatePaid] => 0
+    [StoreID] => 
+    [TradeAmt] => 6080
+    [TradeDate] => 2020/10/14 14:59:53
+    [TradeNo] => 2010141459530740
+    [CheckMacValue] => 93E30FA0927DEA557497B97BDED0152A7B08E2ED6BD4EA5F466B45E8161DB878
+)
+93E30FA0927DEA557497B97BDED0152A7B08E2ED6BD4EA5F466B45E8161DB878

@@ -2,7 +2,7 @@
 
 namespace App\Http\Repository;
 
-use App\Http\Model\Shopping_cart;
+use App\Http\Model\shopping_cart;
 use App\Http\Model\order;
 use Carbon\Carbon;
 class Shopping_cartRepository
@@ -12,14 +12,14 @@ class Shopping_cartRepository
 
     public function __construct()
     {
-        $this->Shopping_cart = new Shopping_cart();
+        $this->Shopping_cart = new shopping_cart();
         $this->order = new order();
     }
 
     public function add_Shopping_cartRepository($collect,$account,$Order_build_id)
     {   
         $order_id=$Order_build_id[0]->order_id;
-        $affectedRows = Shopping_cart::where('user_account', '=', $account)->delete();
+        $affectedRows = shopping_cart::where('user_account', '=', $account)->delete();
         // $Shopping_cart = new Shopping_cart;
         
         foreach ($collect as $key => $value) {
@@ -35,7 +35,7 @@ class Shopping_cartRepository
                         'updated_at'=> Carbon::now()
                         );
             try{
-                Shopping_cart::insert($data);     
+                shopping_cart::insert($data);     
             }catch (\Exception $e){
                 return $e;
             }
@@ -61,24 +61,24 @@ class Shopping_cartRepository
     }
 
     public function select_cartRepository($account){
-        $select_cart = Shopping_cart::where('user_account', '=', $account)->get();
+        $select_cart = shopping_cart::where('user_account', '=', $account)->get();
         return$select_cart;
     }
     public function delete_cartRepository($id,$account){
-        $delete_cart = Shopping_cart::where('id', '=', $id)->where('user_account','=',$account)->delete();
+        $delete_cart = shopping_cart::where('id', '=', $id)->where('user_account','=',$account)->delete();
     return $delete_cart;
     }
 
     public function update_cartRepository($id,$account,$quantity,$total_fee){
-        $delete_cart = Shopping_cart::where('id', '=', $id)->where('user_account','=',$account)->update(['quantity'=>$quantity,'total_fee'=>$total_fee]);
+        $delete_cart = shopping_cart::where('id', '=', $id)->where('user_account','=',$account)->update(['quantity'=>$quantity,'total_fee'=>$total_fee]);
     return $delete_cart;
     }    
 
     public function select_order_cartRepository($payment_number){
-        $select_order_cart = Shopping_cart::where('order_id', '=', $payment_number)->get();
+        $select_order_cart = shopping_cart::where('order_id', '=', $payment_number)->get();
         return $select_order_cart;
     }
     public function Empty_cart_Repository($cart_id){
-        Shopping_cart::where('order_id', '=', $cart_id)->delete();
+        shopping_cart::where('order_id', '=', $cart_id)->delete();
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class shippinginterface extends Model
+class ShippingInterface extends Model
 {
-    protected $table='shippinginterface';
+    protected $table='ShippingInterface';
 }

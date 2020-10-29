@@ -2,7 +2,7 @@
 
 namespace App\Http\Repository;
 
-use App\Http\Model\order;
+use App\Http\Model\Order;
 use App\Http\Model\order_shipping;
 use App\Http\Model\order_commodity_item;
 use App\Http\Model\shippinginterface;
@@ -17,7 +17,7 @@ class OrderRepository
 
     public function __construct()
     {
-        $this->order = new order();
+        $this->order = new Order();
         $this->order_shipping = new order_shipping();
         $this->order_commodity_item = new order_commodity_item();
         $this->shippinginterface = new shippinginterface();
@@ -26,11 +26,11 @@ class OrderRepository
     }
     //廠商訂單編號新增
     public function Vendor_transaction_number_updata_Repository($MerchantTradeNo,$order_id){
-        $updata_Vendor_number = order::where('order_id', '=', $order_id)->update(['payment_number' =>$MerchantTradeNo]);
+        $updata_Vendor_number = Order::where('order_id', '=', $order_id)->update(['payment_number' =>$MerchantTradeNo]);
     }
     //廠商訂單編號查詢
     public function Vendor_transaction_number_check_Repository($MerchantTradeNo,$order_id){
-        $check_Vendor_number = order::where('payment_number', '=', $MerchantTradeNo)->where('status','=','1')->where('order_id','=',$order_id)->first();
+        $check_Vendor_number = Order::where('payment_number', '=', $MerchantTradeNo)->where('status','=','1')->where('order_id','=',$order_id)->first();
         if($check_Vendor_number == 'null'){
             return true;
         }
@@ -40,7 +40,7 @@ class OrderRepository
     public function order_CreditCard_Repository($payment_number,$payment,$payment_type,$status,$payment_time,$end_time,$post_fee)
     {
 
-        $affectedRows = order::where('payment_number', '=', $payment_number)->update(
+        $affectedRows = Order::where('payment_number', '=', $payment_number)->update(
            [
             'post_fee'=>$post_fee,
             'payment' => $payment,
@@ -63,7 +63,7 @@ class OrderRepository
                 'LogisticsSubType'=>$input['LogisticsSubType'],
                 'payment_number'=>$MerchantTradeNo
             ]);
-            order::where('order_id', '=', $order_id)->update(
+            Order::where('order_id', '=', $order_id)->update(
                 [
                  'buy_message'=>$input['buy_message'],
                  'post_fee'=>$input['post_fee']
@@ -80,7 +80,7 @@ class OrderRepository
             $order_shipping->payment_number = $MerchantTradeNo;
             $order_shipping->save();
 
-            order::where('order_id', '=', $order_id)->update(
+            Order::where('order_id', '=', $order_id)->update(
                 [
                  'buy_message'=>$input['buy_message'],
                  'post_fee'=>$input['post_fee']
@@ -118,11 +118,11 @@ class OrderRepository
     // }
     //查詢訂單編號
     public function select_order_cartRepository($payment_number){
-        $payment_number = order::where('payment_number', '=', $payment_number)->first();
+        $payment_number = Order::where('payment_number', '=', $payment_number)->first();
         return $payment_number;
     }
     public function select_order_shipping_Repository($cart_id,$payment_number){
-        $payment_number = order_shipping::where('order_id', '=', $cart_id)->update(
+        $payment_number = Order_shipping::where('order_id', '=', $cart_id)->update(
            [
             'payment_number' => $payment_number->payment_number
         ]);

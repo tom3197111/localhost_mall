@@ -4,7 +4,7 @@ namespace App\Http\Repository;
 
 use App\Http\Model\CompanyInfo;
 use App\Http\Model\Category;
-use App\Http\Model\commodity;
+use App\Http\Model\Commodity;
 class IndexRepository
 {
     protected $companyInfo;
@@ -14,18 +14,18 @@ class IndexRepository
     {
         $this->category = new Category();
         $this->companyInfo = new CompanyInfo();
-        $this->commodity =new commodity();
+        $this->commodity =new Commodity();
 
     }
 
     public function get()
     {
-        $companyinfo = companyinfo::get();
+        $companyinfo = CompanyInfo::get();
         return $companyinfo;
     }
     public function getCommodity()
     {
-        $commodity = commodity::get();
+        $commodity = Commodity::get();
         return $commodity;
     }
 

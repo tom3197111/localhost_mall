@@ -17,7 +17,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
         function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- checkout -->
-<link rel="stylesheet" href="/css/order/core-style.css">
+<link rel="stylesheet" href="public/css/order/core-style.css">
 <!--//tags -->
 <link href="{{asset('public/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" media="all" />
 <link href="{{asset('public/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />

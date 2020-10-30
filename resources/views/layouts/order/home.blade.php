@@ -13,39 +13,39 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Elite Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates,
 " />
-<script type="text/javascript" src="{{asset('publicpublicpublic/js/5ab83813e2.js')}}"></script>
+<script type="text/javascript" src="{{asset('public/js/5ab83813e2.js')}}"></script>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
         function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- checkout -->
 <link rel="stylesheet" href="/css/order/core-style.css">
 <!--//tags -->
-<link href="{{asset('publicpublicpublic/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" media="all" />
-<link href="{{asset('publicpublicpublic/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
-<link href="{{asset('publicpublicpublic/css/font-awesome.min.css')}}" rel="stylesheet">
-<link href="{{asset('publicpublicpublic/css/easy-responsive-tabs.css')}}" rel='stylesheet' type='text/css'/>
+<link href="{{asset('public/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" media="all" />
+<link href="{{asset('public/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
+<link href="{{asset('public/css/font-awesome.min.css')}}" rel="stylesheet">
+<link href="{{asset('public/css/easy-responsive-tabs.css')}}" rel='stylesheet' type='text/css'/>
 <!-- alert -->
-<link href="{{asset('publicpublicpublic/alertify/css/alertify.min.css')}}" rel='stylesheet' type='text/css'/>
-<link href="{{asset('publicpublicpublic/alertify/css/themes/default.min.css')}}" rel='stylesheet' type='text/css'/>
+<link href="{{asset('public/alertify/css/alertify.min.css')}}" rel='stylesheet' type='text/css'/>
+<link href="{{asset('public/alertify/css/themes/default.min.css')}}" rel='stylesheet' type='text/css'/>
 <!-- //for bootstrap working -->
-<link href="{{asset('publicpublicpublic/css/OpenSans.css')}}" rel="stylesheet">
-<link href="{{asset('publicpublicpublic/css/italic.css')}}" rel='stylesheet' type='text/css'>
+<link href="{{asset('public/css/OpenSans.css')}}" rel="stylesheet">
+<link href="{{asset('public/css/italic.css')}}" rel='stylesheet' type='text/css'>
 <!-- js -->
-<script type="text/javascript" src="{{asset('publicpublicpublic/js/jquery-2.1.4.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('public/js/jquery-2.1.4.min.js')}}"></script>
 <!-- account -->
-<script type="text/javascript" src="{{asset('publicpublicpublic/js/account/ajax.js')}}"></script>
-<script type="text/javascript" src="{{asset('publicpublicpublic/js/account/account.js')}}"></script>
+<script type="text/javascript" src="{{asset('public/js/account/ajax.js')}}"></script>
+<script type="text/javascript" src="{{asset('public/js/account/account.js')}}"></script>
 <!-- alert -->
-<script type="text/javascript" src="{{asset('publicpublicpublic/alertify/alertify.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('public/alertify/alertify.min.js')}}"></script>
 <!-- TWzipcode -->
-<script type="text/javascript" src="{{asset('publicpublicpublic/js/TWzipcode/jquery.twzipcode.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('public/js/TWzipcode/jquery.twzipcode.min.js')}}"></script>
 
 <!-- //js -->
-<script src="{{asset('publicpublicpublic/js/modernizr.custom.js')}}"></script>
+<script src="{{asset('public/js/modernizr.custom.js')}}"></script>
 	<!-- Custom-JavaScript-File-Links -->
 <!-- script for responsive tabs -->
-<script src="{{asset('publicpublicpublic/js/easy-responsive-tabs.js')}}"></script>
+<script src="{{asset('public/js/easy-responsive-tabs.js')}}"></script>
 <!-- orer -->
-<script src="{{asset('publicpublicpublic/js/order/order.js')}}"></script>
+<script src="{{asset('public/js/order/order.js')}}"></script>
 <script>
 	$(document).ready(function () {
 	$('#horizontalTab').easyResponsiveTabs({
@@ -71,10 +71,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- //script for responsive tabs -->
 <!-- stats -->
 
-	<script src="{{asset('publicpublicpublic/js/jquery.waypoints.min.js')}}"></script>
+	<script src="{{asset('public/js/jquery.waypoints.min.js')}}"></script>
 <!-- //stats -->
 <!-- start-smoth-scrolling -->
-<script type="text/javascript" src="{{asset('publicpublicpublic/js/move-top.js')}}"></script>
+<script type="text/javascript" src="{{asset('public/js/move-top.js')}}"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event){
@@ -85,7 +85,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </script>
 
 <!-- for bootstrap working -->
-<script type="text/javascript" src="{{asset('publicpublicpublic/js/bootstrap.js')}}"></script>
+<script type="text/javascript" src="{{asset('public/js/bootstrap.js')}}"></script>
   <style>
   .badge-notify{
     background:red;

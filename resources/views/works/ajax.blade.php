@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>hello </title>
-        <script type="text/javascript" src="{{asset('publicpublicpublicresources/views/admin/style/js/jquery.js')}}"></script>
+        <script type="text/javascript" src="{{asset('public/resources/views/admin/style/js/jquery.js')}}"></script>
     </head>
    
     <div style="text-align:center;">

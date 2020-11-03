@@ -2,13 +2,13 @@
 /* :: 1.0 Import Web Fonts */
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Ubuntu:300,400,500,700");
 /* :: 2.0 Import All CSS */
-@import url(public/css/order/bootstrap.min.css);
+/*@import url(css/order/bootstrap.min.css);*/
 /*@import url(/css/order/classy-nav.min.css);*/
-@import url(public/css/order/owl.carousel.css);
-@import url(public/css/order/animate.css);
-@import url(public/css/order/magnific-popup.css);
-@import url(public/css/order/jquery-ui.min.css);
-@import url(public/css/order/nice-select.css);
+/*@import url(css/order/owl.carousel.css);
+@import url(css/order/animate.css);
+@import url(css/order/magnific-popup.css);
+@import url(css/order/jquery-ui.min.css);
+@import url(css/order/nice-select.css);*/
 
 /* :: 3.0 Common/Base CSS */
 * {

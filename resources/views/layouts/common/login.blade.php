@@ -86,7 +86,7 @@
 							<ul class="dropdown-menu multi-column columns-3">
 								<div class="agile_inner_drop_nav_info">
 									<div class="col-sm-6 multi-gd-img1 multi-gd-text ">
-										<a href="mens.html"><img src="{{asset('public/images/top2.jpg')}}" alt=" "/></a>
+										<a href="mens.html"><img src="{{asset('images/top2.jpg')}}" alt=" "/></a>
 									</div>
 									<div class="col-sm-3 multi-gd-img">
 										<ul class="multi-column-dropdown">

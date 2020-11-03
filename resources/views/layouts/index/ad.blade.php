@@ -24,7 +24,7 @@
 	<!-- schedule-bottom -->
 	<div class="schedule-bottom">
 		<div class="col-md-6 agileinfo_schedule_bottom_left">
-			<img src="public/images/mid.jpg" alt=" " class="img-responsive" />
+			<img href="{{asset('images/mid.jpg')}}" alt=" " class="img-responsive" />
 		</div>
 		<div class="col-md-6 agileits_schedule_bottom_right">
 			<div class="w3ls_schedule_bottom_right_grid">

@@ -54,7 +54,7 @@
                                     @if($val['LogisticsType']=='Black_cat')
                                         <?php
                                             $String = $val->logo_img;
-                                            $url=str_replace("public\\",'https://34.80.230.232/MALL_BACKEND/public/', $String);
+                                            $url=str_replace("public\\",'http://mall_backend.com/', $String);
                                         ?>
                                             <div class="col-lg-4 col-sm-4 col-xs-4 ">
                                                <img class="Eleven" id="Eleven" src="{{$url}}" style="width: 100PX;height: 100pX">
@@ -75,7 +75,7 @@
                     @if($val['LogisticsType']!='Black_cat')
                         <?php
                             $String = $val->logo_img;
-                            $url=str_replace("public\\",'https://34.80.230.232/MALL_BACKEND/public/', $String);
+                            $url=str_replace("public\\",'http://mall_backend.com/', $String);
                         ?>
                             <div class="col-lg-4 col-sm-4 col-xs-4 ">
                                <a href="Logistics/map/{{$val['LogisticsType']}}/{{$order[0]->order_id}}"> <img class="Eleven" id="Eleven" src="{{$url}}"
@@ -98,7 +98,7 @@
                     <input type="hidden" id="LogisticsSubType" value="{{$Logistics['LogisticsSubType']}}">
            @if($logo_img != '')
                 <?php
-                    $url=str_replace("public\\",'https://34.80.230.232/MALL_BACKEND/public/', $logo_img['logo_img']);
+                    $url=str_replace("public\\",'http://mall_backend.com/', $logo_img['logo_img']);
                 ?>
                 <img src="{{$url}}" style="width: 30PX;height: 30pX"></span><br>
            @endif 

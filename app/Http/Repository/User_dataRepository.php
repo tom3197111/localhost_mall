@@ -57,7 +57,7 @@ class User_dataRepository
             return "ok";
         }catch (\Exception $e){
             // dd($e);
-            return "Repository_no";
+            return $e;
         }
 
     }

@@ -556,31 +556,31 @@ a.simpleCart_empty {
 }
 /*-- banner --*/
 .carousel .item{
-	background:-webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('https://34.80.230.232/MALL_BACKEND/public/images/banner/banner1.jpg') no-repeat;
-	background:-moz-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('https://34.80.230.232/MALL_BACKEND/public/images/banner/banner1.jpg') no-repeat;
-	background:-ms-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('https://34.80.230.232/MALL_BACKEND/public/images/banner/banner1.jpg') no-repeat;
-	background:linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('https://34.80.230.232/MALL_BACKEND/public/images/banner/banner1.jpg') no-repeat;
+	background:-webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('http://mall_backend.com/images/banner/banner1.jpg') no-repeat;
+	background:-moz-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('http://mall_backend.com/images/banner/banner1.jpg') no-repeat;
+	background:-ms-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('http://mall_backend.com/images/banner/banner1.jpg') no-repeat;
+	background:linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('http://mall_backend.com/images/banner/banner1.jpg') no-repeat;
 	background-size:cover;
 }
 .carousel .item.item2{
-	background:-webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('https://34.80.230.232/MALL_BACKEND/public/images/banner/banner2.jpg') no-repeat;
-	background:-moz-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('https://34.80.230.232/MALL_BACKEND/public/images/banner/banner2.jpg') no-repeat;
-	background:-ms-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('https://34.80.230.232/MALL_BACKEND/public/images/banner/banner2.jpg') no-repeat;
-	background:linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('https://34.80.230.232/MALL_BACKEND/public/images/banner/banner2.jpg') no-repeat;
+	background:-webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('http://mall_backend.com/images/banner/banner2.jpg') no-repeat;
+	background:-moz-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('http://mall_backend.com/images/banner/banner2.jpg') no-repeat;
+	background:-ms-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('http://mall_backend.com/images/banner/banner2.jpg') no-repeat;
+	background:linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('http://mall_backend.com/images/banner/banner2.jpg') no-repeat;
 	background-size:cover;
 }
 .carousel .item.item3{
-	background:-webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('https://34.80.230.232/MALL_BACKEND/public/images/banner/banner3.jpg') no-repeat;
-	background:-moz-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('https://34.80.230.232/MALL_BACKEND/public/images/banner/banner3.jpg') no-repeat;
-	background:-ms-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('https://34.80.230.232/MALL_BACKEND/public/images/banner/banner3.jpg') no-repeat;
-	background:linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('https://34.80.230.232/MALL_BACKEND/public/images/banner/banner3.jpg') no-repeat;
+	background:-webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('http://mall_backend.com/images/banner/banner3.jpg') no-repeat;
+	background:-moz-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('http://mall_backend.com/images/banner/banner3.jpg') no-repeat;
+	background:-ms-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('http://mall_backend.com/images/banner/banner3.jpg') no-repeat;
+	background:linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('http://mall_backend.com/images/banner/banner3.jpg') no-repeat;
 	background-size:cover;
 }
 .carousel .item.item4{
-	background:-webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('https://34.80.230.232/MALL_BACKEND/public/images/banner/banner4.jpg') no-repeat;
-	background:-moz-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('https://34.80.230.232/MALL_BACKEND/public/images/banner/banner4.jpg') no-repeat;
-	background:-ms-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('https://34.80.230.232/MALL_BACKEND/public/images/banner/banner4.jpg') no-repeat;
-	background:linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('https://34.80.230.232/MALL_BACKEND/public/images/banner/banner4.jpg') no-repeat;
+	background:-webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('http://mall_backend.com/images/banner/banner4.jpg') no-repeat;
+	background:-moz-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('http://mall_backend.com/images/banner/banner4.jpg') no-repeat;
+	background:-ms-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('http://mall_backend.com/images/banner/banner4.jpg') no-repeat;
+	background:linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url('http://mall_backend.com/images/banner/banner4.jpg') no-repeat;
 	background-size:cover;
 }
 
@@ -1613,7 +1613,7 @@ a.single-item{
 }
 /*-- /sale --*/
    .sale-w3ls {
-    background: url('https://34.80.230.232/MALL_BACKEND/public/images/banner/banner1.jpg')no-repeat 0px 0px;
+    background: url('http://mall_backend.com/images/banner/banner1.jpg')no-repeat 0px 0px;
     background-attachment: fixed;
     background-size: cover;
 	-webkit-background-size: cover;

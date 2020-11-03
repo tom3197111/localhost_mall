@@ -97,7 +97,7 @@ class User_dataService
                 //退回(back)發送請求的該頁面並且將錯誤訊息一起傳送過去(withErrors($validator))
                 //dd(back()->withErrors($validator));
                 $errors=$validator->messages();
-                dd($errors);
+                // dd($errors);
                 return back()->withErrors($errors);
             }
         }

@@ -1,11 +1,4 @@
 <!-- /new_arrivals -->
-							@foreach($commodity as $k =>$commodity_list)
-			                        <?php
-				                        $String = $commodity_list->file_upload;
-				                        $url='http://'.$_SERVER['SERVER_NAME']."\localhost_MALL_BACKEND\\".$String;
-				                        // str_replace("public\\",$_SERVER['SERVER_NAME'], $String);
-			                        ?><img src="{{$url}}" alt="" class="pro-image-front">
-			                        	@endforeach
 	<div class="new_arrivals_agile_w3ls_info">
 		<div class="container">
 		    <h3 class="wthree_text_info"><span  style="color:red;">全館熱賣中</span> </h3>
@@ -29,7 +22,7 @@
 	                        	@if($v->cate_id==$commodity_list->cate_id)
 			                        <?php
 				                        $String = $commodity_list->file_upload;
-				                        $url=$_SERVER['SERVER_NAME']."\localhost_MALL_BACKEND\\".$String;
+				                        $url='http://'.$_SERVER['SERVER_NAME']."\localhost_MALL_BACKEND\\".$String;
 				                        // str_replace("public\\",$_SERVER['SERVER_NAME'], $String);
 			                        ?><h1>{{$url}}<h1>
 							<div class="col-md-3 product-men">

@@ -4,7 +4,7 @@
 				                        $String = $commodity_list->file_upload;
 				                        $url=$_SERVER['SERVER_NAME']."\localhost_MALL_BACKEND\\".$String;
 				                        // str_replace("public\\",$_SERVER['SERVER_NAME'], $String);
-			                        ?><h1>{{$url}}<h1>
+			                        ?><img src="{{$url}}" alt="" class="pro-image-front">
 			                        	@endforeach
 
 	<div class="new_arrivals_agile_w3ls_info">

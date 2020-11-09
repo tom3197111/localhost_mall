@@ -6,7 +6,7 @@
 
 						<ul class="resp-tabs-list">
 							@foreach($Category as $k=>$v)
-							 	@if( $v->cate_pid != 0)
+							 	@if( $v->cate_pid == 0)
 								<li>{{$v->cate_name}}</li>
 								@endif
 							@endforeach
@@ -15,7 +15,7 @@
 					<div class="resp-tabs-container">
 					<!--/tab_one-->
 				@foreach($Category as $k=>$v)
-					@if( $v->cate_pid != 0)
+					@if( $v->cate_pid == 0)
 						<div class="tab{{$v->cate_id}}">
 					
 							@foreach($commodity as $k =>$commodity_list)
@@ -24,7 +24,7 @@
 				                        $String = $commodity_list->file_upload;
 				                        $url='http://'.$_SERVER['SERVER_NAME']."\localhost_MALL_BACKEND\\".$String;
 				                        // str_replace("public\\",$_SERVER['SERVER_NAME'], $String);
-			                        ?><h1>{{$url}}<h1>
+			                        ?>
 							<div class="col-md-3 product-men">
 								<div class="men-pro-item simpleCart_shelfItem">
 									<div class="men-thumb-item">

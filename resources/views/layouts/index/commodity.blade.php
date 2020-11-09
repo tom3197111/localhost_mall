@@ -1,12 +1,10 @@
 <!-- /new_arrivals -->
 							@foreach($commodity as $k =>$commodity_list)
-	                        	@if($v->cate_id==$commodity_list->cate_id)
 			                        <?php
 				                        $String = $commodity_list->file_upload;
 				                        $url=$_SERVER['SERVER_NAME']."\localhost_MALL_BACKEND\\".$String;
 				                        // str_replace("public\\",$_SERVER['SERVER_NAME'], $String);
 			                        ?><h1>{{$url}}<h1>
-			                        	@endif
 			                        	@endforeach
 
 	<div class="new_arrivals_agile_w3ls_info">

@@ -23,7 +23,8 @@
 	                        	@if($v->cate_id==$commodity_list->cate_id)
 			                        <?php
 				                        $String = $commodity_list->file_upload;
-				                        $url=str_replace("public\\",'http://mall_backend.com/', $String);
+				                        $url=$_SERVER['SERVER_NAME']."\localhost_MALL_BACKEND\\".$String;
+				                        // str_replace("public\\",$_SERVER['SERVER_NAME'], $String);
 			                        ?>
 							<div class="col-md-3 product-men">
 								<div class="men-pro-item simpleCart_shelfItem">

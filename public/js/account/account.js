@@ -154,7 +154,7 @@ $(".edit_tip_most_Validator").hide();
 		}
 
 		}
-
+ 
 
 //註冊帳號檢查有無重複
 $(".tip_account").hide();
@@ -364,7 +364,7 @@ $(function(){
 						alertify
 						  .alert("註冊成功,驗證信已寄出,麻煩從註冊信箱驗證", function(){
 						    alertify.message('註冊成功 返回首頁');	
-						    window.location.replace('http://mall.com/');
+						    window.location.replace('http://www.fishing-tackle-mall.com/localhost_mall/');
 						    });   
 						  
 			    	}else{

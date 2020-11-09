@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Http\Service;
-
+use mail;
 use App\Http\Repository\User_dataRepository;
 use Session;
 use Illuminate\Support\Facades\Validator;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
-require '../vendor/autoload.php';
+
 class User_dataService
 {
     protected $User_dataRepository;
@@ -113,21 +113,7 @@ class User_dataService
     }
 
     public function php_Email($account_or_password=null,$input_=null,$neme=null,$email=null,$random=null){
-        $mail = new PHPMailer();
-        $mail->isSMTP();
-        $mail->SMTPAuth = true; // turn on SMTP authentication
-        //這幾行是必須的
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Host="smtp.gmail.com";
-        $mail->Post =587;
-        $mail->CharSet="utf8";
-         // $mail->SMTPDebug = 2;
-        $mail->Username = "tom3197111";
-        $mail->Password = "5vmn3wnABB";
-        //這邊是你的gmail帳號和密碼
-        $mail->FromName = "漁具百貨";
-        // 寄件者名稱(你自己要顯示的名稱)
-        $webmaster_email = "tom033197111@gmail.com";
+
         //回覆信件至此信箱
         if($account_or_password!=null){
             // 收件者信箱
@@ -135,77 +121,34 @@ class User_dataService
             // 收件者的名稱or暱稱
             $name=$account_or_password['name'];
 
-
-
-            $mail->From = $webmaster_email;
-
-
-            $mail->AddAddress($email,$name);
-            $mail->AddReplyTo($webmaster_email,"Squall.f");
-            //這不用改
-
-            $mail->WordWrap = 50;
-            //每50行斷一次行
-
-            //$mail->AddAttachment("/XXX.rar");
-            // 附加檔案可以用這種語法(記得把上一行的//去掉)
-
-            $mail->IsHTML(true); // send as HTML
-
-            $mail->Subject = "漁具百貨忘記帳號信息";// 信件標題
-
             if($input_ == 'forget_account'){
                 $account_or_password=$account_or_password['account'];
-                $content="您的帳號是<br>".$account_or_password;
+                $content =['title'=>"帳號查詢",
+                        'content'=>"您的帳號是:".$account_or_password
+                    ];
+                $subject='帳號查詢';  
             }else if($input_ == 'forget_password'){
                 $account_or_password=$account_or_password['password'];
-                $content="您的密碼是<br>".$account_or_password;
-            }
-            $mail->Body = $content;
-            //信件內容(html版，就是可以有html標籤的如粗體、斜體之類)
-            // $mail->AltBody = "信件內容";
-            // //信件內容(純文字版)
-
-            if(!$mail->Send()){
-            echo "寄信發生錯誤：" . $mail->ErrorInfo;
-            //如果有錯誤會印出原因
-            }
-            else{
-            // echo "ok";
+                $content =['title'=>"密碼查詢",
+                        'content'=>"您的密碼是:".$account_or_password
+                    ];
+                $subject='密碼查詢';
+                
             }
         }else{
             $email=$email;
             // 收件者信箱
             $name=$neme;
-            // 收件者的名稱or暱稱
-            $mail->From = $webmaster_email;
-            $mail->AddAddress($email,$name);
-            $mail->AddReplyTo($webmaster_email,"Squall.f");
-            //這不用改
-
-            $mail->WordWrap = 50;
-            //每50行斷一次行
-
-            //$mail->AddAttachment("/XXX.rar");
-            // 附加檔案可以用這種語法(記得把上一行的//去掉)
-
-            $mail->IsHTML(true); // send as HTML
-
-            $mail->Subject = "漁具百貨驗證信";
-            // 信件標題
-            $mail->Body = "會員信箱驗證碼<br>請點擊網址:http://mall.com/random/".$random;
-            //信件內容(html版，就是可以有html標籤的如粗體、斜體之類)
-            // $mail->AltBody = "信件內容";
-            // //信件內容(純文字版)
-
-            if(!$mail->Send()){
-            echo "寄信發生錯誤：" . $mail->ErrorInfo;
-            //如果有錯誤會印出原因
-            }
-            else{
-            // echo "ok";
-            }
+            $content =['title'=>"會員信箱驗證碼",
+                        'content'=>"請點擊網址:http://www.fishing-tackle-mall.com/localhost_mall/random/".$random
+                    ];
+            $subject='漁具百貨驗證信';
         }
+
+                \Mail::send('emails.test',$content,function($message) use ($email,$subject){ 
+                    
+                    $message ->to($email)->subject($subject); 
+                }); 
     }
 
     public function forget_account_service($input){

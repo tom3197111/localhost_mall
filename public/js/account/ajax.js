@@ -18,7 +18,7 @@
 	            		alertify.error('麻煩至註冊信箱,確認驗證信');
 	            	}
 	            	else{
-	  					window.location.replace("http://mall.com/");
+	  					window.location.replace("http://www.fishing-tackle-mall.com/localhost_mall/");
 	            	}
 	            },
 	            error: function(res) {

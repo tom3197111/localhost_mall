@@ -25,7 +25,7 @@
 				                        $String = $commodity_list->file_upload;
 				                        $url=$_SERVER['SERVER_NAME']."\localhost_MALL_BACKEND\\".$String;
 				                        // str_replace("public\\",$_SERVER['SERVER_NAME'], $String);
-			                        ?>
+			                        ?><h1>{{$url}}<h1>
 							<div class="col-md-3 product-men">
 								<div class="men-pro-item simpleCart_shelfItem">
 									<div class="men-thumb-item">

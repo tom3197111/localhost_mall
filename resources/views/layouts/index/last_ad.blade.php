@@ -9,4 +9,5 @@
 		</div>
     @endif
 @endforeach
+<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 

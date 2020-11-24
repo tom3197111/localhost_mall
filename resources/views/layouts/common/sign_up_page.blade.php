@@ -1,4 +1,5 @@
-
+@foreach($baneer as $k => $v)
+	@if($v->banner_tag==15)
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
 			<div class="modal-dialog">
 				<!-- Modal content-->
@@ -48,7 +49,8 @@
 
 						</div>
 						<div class="col-md-4 modal_body_right modal_body_right1">
-							<img src="/images/log_pic.jpg" alt=" "/>
+							
+							<img src="{{$v->banner_url}}" alt=" "/>
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -57,6 +59,10 @@
 			</div>
 		</div>
 <!-- //Modal1 -->
+	@endif
+@endforeach
+@foreach($baneer as $k => $v)
+	@if($v->banner_tag==16)
 <!-- Modal2 -->
 		<div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
 			<div class="modal-dialog">
@@ -135,7 +141,7 @@
 
 						</div>
 						<div class="col-md-4 modal_body_right modal_body_right1">
-							<img src="/images/log_pic.jpg" alt=" "/>
+							<img src="{{$v->banner_url}}" alt=" "/>
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -144,6 +150,8 @@
 			</div>
 		</div>
 <!-- //Modal2 -->
+	@endif
+@endforeach
 
 <!-- Modal1 -->
 		<div class="modal fade" id="myModal3" tabindex="-1" role="dialog">
@@ -293,7 +301,7 @@
 
 						</div>
 						<div class="col-md-4 modal_body_right modal_body_right1">
-							<img src="/images/log_pic.jpg" alt=" "/>
+							<img src="{{$v->banner_url}}" alt=" "/>
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -303,7 +311,8 @@
 		</div>
 <!-- //Modal1 -->
 
-
+@foreach($baneer as $k => $v)
+	@if($v->banner_tag==17)
 <!-- Modal2 -->
 		<div class="modal fade" id="select_account" tabindex="-1" role="dialog">
 			<div class="modal-dialog">
@@ -339,7 +348,7 @@
 						</form>
 						</div>
 						<div class="col-md-4 modal_body_right modal_body_right1">
-							<img src="/images/log_pic.jpg" alt=" "/>
+							<img src="{{$v->banner_url}}" alt=" "/>
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -348,6 +357,10 @@
 			</div>
 		</div>
 <!-- //Modal2 -->
+	@endif
+@endforeach
+@foreach($baneer as $k => $v)
+	@if($v->banner_tag==18)
 <!-- Modal2 -->
 		<div class="modal fade" id="select_password" tabindex="-1" role="dialog">
 			<div class="modal-dialog">
@@ -379,10 +392,10 @@
 							<div>
 							<input type="submit" value="確認" onclick="forget_password();">
 							</div>
-						</form>
+						</form> 
 						</div>
 						<div class="col-md-4 modal_body_right modal_body_right1">
-							<img src="/images/log_pic.jpg" alt=" "/>
+							<img src="{{$v->banner_url}}" alt=" "/>
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -391,3 +404,5 @@
 			</div>
 		</div>
 <!-- //Modal2 -->
+	@endif
+@endforeach

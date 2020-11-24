@@ -23,7 +23,8 @@ class HomeController extends Controller
         $Category = $this->CategoryService->tree();
         $baneer =$this->BaneerService->img();
         $commodity = $this->IndexService->getCommodity();
-        return view('home.index',compact('data','Category','baneer','commodity'));
+        $category_commodity = $this->IndexService->Main_category();
+        return view('home.index',compact('data','Category','baneer','commodity','category_commodity'));
     }
 
 }

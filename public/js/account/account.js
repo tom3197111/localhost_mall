@@ -292,37 +292,30 @@ $(".tip_phone_no").hide();
 	    }
 	}
 
-$(function(){
-	$("#zipcode3").twzipcode({
-		countySel: "縣市", // 城市預設值, 字串一定要用繁體的 "臺", 否則抓不到資料
-		districtSel: "鄉政市區", // 地區預設值
-		zipcodeIntoDistrict: true, // 郵遞區號自動顯示在地區
-		css: ["city form-control", "town form-control"], // 自訂 "城市"、"地區" class 名稱
-		countyName: "city", // 自訂城市 select 標籤的 name 值
-		districtName: "town" // 自訂地區 select 標籤的 name 值
-	});
-})
-$(function(){
-	$("#zipcode2").twzipcode({
-		countySel: "縣市", // 城市預設值, 字串一定要用繁體的 "臺", 否則抓不到資料
-		districtSel: "鄉政市區", // 地區預設值
-		zipcodeIntoDistrict: true, // 郵遞區號自動顯示在地區
-		css: ["city form-control", "town form-control"], // 自訂 "城市"、"地區" class 名稱
-		countyName: "city", // 自訂城市 select 標籤的 name 值
-		districtName: "town" // 自訂地區 select 標籤的 name 值
-	});
-})
 
 $(function(){
-	$("#zipcode").twzipcode({
+	$("#zipcode,#zipcode2,#zipcode3").twzipcode({
 		countySel: "縣市", // 城市預設值, 字串一定要用繁體的 "臺", 否則抓不到資料
 		districtSel: "鄉政市區", // 地區預設值
 		zipcodeIntoDistrict: true, // 郵遞區號自動顯示在地區
 		css: ["city form-control", "town form-control"], // 自訂 "城市"、"地區" class 名稱
-		countyName: "edit_city", // 自訂城市 select 標籤的 name 值
-		districtName: "edit_town" // 自訂地區 select 標籤的 name 值
+		countyName: "city", // 自訂城市 select 標籤的 name 值
+		districtName: "town" // 自訂地區 select 標籤的 name 值
 	});
+
 })
+$(function(){
+	$("#zipcode4").twzipcode({
+		countySel: "縣市", // 城市預設值, 字串一定要用繁體的 "臺", 否則抓不到資料
+		districtSel: "鄉政市區", // 地區預設值
+		zipcodeIntoDistrict: true, // 郵遞區號自動顯示在地區
+		css: ["city form-control", "town form-control"], // 自訂 "城市"、"地區" class 名稱
+		countyName: "receiver_city", // 自訂城市 select 標籤的 name 值
+		districtName: "receiver_town" // 自訂地區 select 標籤的 name 值
+	});
+
+})
+
 	function checkpas2(){//點選提交按鈕時，觸發checkpas2事件，會進行彈框提醒以防無視錯誤資訊提交
 		//取得checkbox當前的狀態(有勾或沒勾)
 		tip_Name_ok = $('.tip_Name_ok').is(":visible"); 

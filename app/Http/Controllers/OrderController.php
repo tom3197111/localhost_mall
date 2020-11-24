@@ -34,28 +34,42 @@ class OrderController extends Controller
         $this->User_dataService =new User_dataService();
         $this->LogisticsService =new LogisticsService();
     }	
+
+    public function users_address(){
+        
+        if (Session::has('account'))
+        {   
+            $input = Request()->all();
+            $account = Session::get('account');
+        }
+        $this->OrderService->create_user_address_data_Service($input,$account);
+        return redirect('checkout');
+    }
+
     public function order_creation(){
+        $account = Session::get('account');
         $logo_img='';
         $Logistics = Request()->all();
         if(count($Logistics)!=0){
             $logo_img = $this->OrderService->logo_img($Logistics);
         }    
         // dd($logo_img)
-    	$data=$this->IndexService->get();
+        $user_address=$this->OrderService->user_address_Service($account);
+        $data=$this->IndexService->get();
         $Category = $this->CategoryService->tree();
         $baneer =$this->BaneerService->img();
         $input=collect(['account' => session('account')]);
         $post_fee=$this->OrderService->shippinginterface_Service();
-       if(empty($order=$this->Shopping_cartService->select_cartService($input))){
-            return view('home.index',compact('data','Category','baneer','commodity','Logistics','post_fee','logo_img'));
-       }else{
+        if(empty($order=$this->Shopping_cartService->select_cartService($input))){
+            return view('home.index',compact('data','Category','baneer','commodity','Logistics','post_fee','logo_img','user_address'));
+        }else{
             $TotalPrice=0;
             foreach ($order as $key => $value) {
                 $Price=$value->total_fee;
                 $TotalPrice=$TotalPrice+$Price;
             }
-            return view('proceed_to_checkout.checkout',compact('data','Category','baneer','order','TotalPrice','Logistics','post_fee','logo_img'));
-       }
+            return view('proceed_to_checkout.checkout',compact('data','Category','baneer','order','TotalPrice','Logistics','post_fee','logo_img','user_address'));
+        }
 
     }
 
@@ -89,11 +103,11 @@ class OrderController extends Controller
         }
 
 
-    try {
-        
+        try {
+
         // $obj = new \ECPay_AllInOne();
-        $obj=new ECPay();
-        
+            $obj=new ECPay();
+
         //服務參數
         $obj->ServiceURL  = "https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5";   //服務位置
         $obj->HashKey     = '5294y06JbISpM5x9' ;                                           //測試用Hashkey，請自行帶入ECPay提供的HashKey
@@ -105,7 +119,7 @@ class OrderController extends Controller
 
         //廠商交易編號 沒有存在 新增一個到訂單內
         $TotalAmount = $TotalPrice+(int)$input['post_fee'];
-        $obj->Send['ReturnURL']         = "https://1182afa3978c.ngrok.io/order_ending/ok" ;    //付款完成通知回傳的網址
+        $obj->Send['ReturnURL']         = "http://https.fishing-tackle-mall.com/localhost_mall/order_ending/ok" ;    //付款完成通知回傳的網址
         $obj->Send['MerchantTradeNo']   = $MerchantTradeNo;                          //訂單編號
         $obj->Send['MerchantTradeDate'] = date('Y/m/d H:i:s');                       //交易時間
         $obj->Send['TotalAmount']       = $TotalAmount;                               //交易金額
@@ -118,26 +132,26 @@ class OrderController extends Controller
 
         //訂單的商品資料
         foreach ($order as $order_num => $value) {
-                $order_num=array(
-                    'Name' => $value->name,
-                    'Price' =>(int)$value->price,
-                    'Currency' => "元", 
-                    'Quantity' => (int)$value->quantity, 
-                    'URL' => "dedwed"
-                );
-                array_push($obj->Send['Items'], $order_num);
+            $order_num=array(
+                'Name' => $value->name,
+                'Price' =>(int)$value->price,
+                'Currency' => "元", 
+                'Quantity' => (int)$value->quantity, 
+                'URL' => "dedwed"
+            );
+            array_push($obj->Send['Items'], $order_num);
 
         }
         //運費
         
-                $order_num=array(
-                    'Name' => '運送方式:'.$input['LogisticsType'],
-                    'Price' =>(int)$input['post_fee'],
-                    'Currency' => "元", 
-                    'Quantity' => '1', 
-                    'URL' => "dedwed"
-                );
-                array_push($obj->Send['Items'], $order_num);
+        $order_num=array(
+            'Name' => '運送方式:'.$input['LogisticsType'],
+            'Price' =>(int)$input['post_fee'],
+            'Currency' => "元", 
+            'Quantity' => '1', 
+            'URL' => "dedwed"
+        );
+        array_push($obj->Send['Items'], $order_num);
         // array_push($obj->Send['Items'], array('Name' => "歐付寶黑芝麻豆漿", 'Price' => (int)"2000",
         //            'Currency' => "元", 'Quantity' => (int) "1", 'URL' => "dedwed"));
 
@@ -179,31 +193,31 @@ class OrderController extends Controller
 // dd($obj);
         //產生訂單(auto submit至ECPay)
       // $obj->CheckOut();
-    $Response = (string)$obj->CheckOutString();
+        $Response = (string)$obj->CheckOutString();
 
-    echo $Response;
+        echo $Response;
     // 自動將表單送出
-    echo '<script>document.getElementById("__ecpayForm").submit();</script>';
+        echo '<script>document.getElementById("__ecpayForm").submit();</script>';
 
     } catch (Exception $e) {
         echo $e->getMessage();
     } 
-        
-    }
 
-    public function order_ending()
-    {
+}
+
+public function order_ending()
+{
         // 將 post 資料轉成字串 儲存 SaveData
         // $String = print_r( $_POST, true );
         // file_put_contents( 'C:\xampp\htdocs\MALL\tmp/ECPay.txt', $String, FILE_APPEND );
-         
 
 
-        define( 'ECPay_MerchantID', '2000132' );
-        define( 'ECPay_HashKey', '5294y06JbISpM5x9' );
-        define( 'ECPay_HashIV', 'v77hoKGq4kWxNNIS' );
+
+    define( 'ECPay_MerchantID', '2000132' );
+    define( 'ECPay_HashKey', '5294y06JbISpM5x9' );
+    define( 'ECPay_HashIV', 'v77hoKGq4kWxNNIS' );
         // 重新整理回傳參數。
-        $arParameters = $_POST;
+    $arParameters = $_POST;
         // foreach ($arParameters as $keys => $value) {
         //     if ($keys != 'CheckMacValue') {
         //         if ($keys == 'PaymentType') {
@@ -220,32 +234,32 @@ class OrderController extends Controller
         //     }
         // }
 
-        $CheckMacValue = ECPay_CheckMacValue::generate( $arParameters, ECPay_HashKey, ECPay_HashIV, 1 );
-         
+    $CheckMacValue = ECPay_CheckMacValue::generate( $arParameters, ECPay_HashKey, ECPay_HashIV, 1 );
+
          //    file_put_contents( 'C:\xampp\htdocs\MALL\tmp/TEST.txt', $CheckMacValue, FILE_APPEND );
          // file_put_contents( 'C:\xampp\htdocs\MALL\tmp/ECPay.txt', $_POST['CheckMacValue'], FILE_APPEND );
 
         // 必須要支付成功並且驗證碼正確
-        if ( $_POST['RtnCode'] =='1' && $CheckMacValue == $_POST['CheckMacValue'] ){
-             $CheckMacVal=$_POST;
-             $payment_number=$CheckMacVal['MerchantTradeNo'];
+    if ( $_POST['RtnCode'] =='1' && $CheckMacValue == $_POST['CheckMacValue'] ){
+       $CheckMacVal=$_POST;
+       $payment_number=$CheckMacVal['MerchantTradeNo'];
              //訂單資料儲存
-             $this->OrderService->order_CreditCard_Service($CheckMacVal);
+       $this->OrderService->order_CreditCard_Service($CheckMacVal);
              //購物車內的資料新增到訂單購物車內
-             $this->OrderService->order_shopping_cart_Service($payment_number);
+       $this->OrderService->order_shopping_cart_Service($payment_number);
              //買家資訊新增訂單編號進去
-             $this->OrderService->order_shipping_insert_payment_number_Service($payment_number);
+       $this->OrderService->order_shipping_insert_payment_number_Service($payment_number);
              //清空購物車
-             $this->OrderService->Empty_cart_Service($payment_number);
+       $this->OrderService->Empty_cart_Service($payment_number);
              //超商物流訂單建立 
-             $this->LogisticsService->Logistics_Service($payment_number);
-             echo '1|OK';
-        }
-       
+       $this->LogisticsService->Logistics_Service($payment_number);
+       echo '1|OK';
+   }
+
         // 接收到資訊回應綠界
-        
-                 
-
-
     }
+public function delete_users_address(){
+     $input = Request()->all();
+}
+
 }

@@ -58,7 +58,9 @@ class LogisticsController extends Controller
         echo $e->getMessage();
     }
     }
-    public function map($Logistics,$num){
+
+    
+    public function map($Logistics,$order_num){
         if($Logistics=='UNIMART'){
             $LogisticsSubType=EcpayLogisticsSubType::UNIMART;
         }elseif ($Logistics=='FAMI') {
@@ -66,7 +68,7 @@ class LogisticsController extends Controller
         }elseif ($Logistics=='HILIFE') {
             $LogisticsSubType=EcpayLogisticsSubType::HILIFE;
         }
-        $http='http://'.$_SERVER["HTTP_HOST"].'/checkout';
+        $http='http://'.$_SERVER["HTTP_HOST"].'/localhost_mall/checkout';
 	    define('HOME_URL', $http);
 	    // require('Ecpay.Logistic.Integration.php');
 	    try {

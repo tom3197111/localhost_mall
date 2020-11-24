@@ -22,16 +22,17 @@
 		 </div>
     </div>
 	<!-- schedule-bottom -->
+	@foreach($baneer as $k => $v)
+		@if($v->banner_tag==14)
 	<div class="schedule-bottom">
 		<div class="col-md-6 agileinfo_schedule_bottom_left">
-			<img href="{{asset('images/mid.jpg')}}" alt=" " class="img-responsive" />
+			<img src="{{$v->banner_url}}" alt=" " class="img-responsive" />
 		</div>
 		<div class="col-md-6 agileits_schedule_bottom_right">
 			<div class="w3ls_schedule_bottom_right_grid">
-				<h3>Save up to <span>50%</span> in this week</h3>
-				<p>Suspendisse varius turpis efficitur erat laoreet dapibus.
-					Mauris sollicitudin scelerisque commodo.Nunc dapibus mauris sed metus finibus posuere.</p>
-				<div class="col-md-4 w3l_schedule_bottom_right_grid1">
+				<h3>{{$v->banner_content_one}} <span>{{$v->banner_content_two}}</span></h3>
+				<p>{{$v->banner_content_three}}</p>
+<!-- 				<div class="col-md-4 w3l_schedule_bottom_right_grid1">
 					<i class="fa fa-user-o" aria-hidden="true"></i>
 					<h4>Customers</h4>
 					<h5 class="counter">653</h5>
@@ -45,12 +46,14 @@
 					<i class="fa fa-shield" aria-hidden="true"></i>
 					<h4>Awards</h4>
 					<h5 class="counter">45</h5>
-				</div>
+				</div> -->
 				<div class="clearfix"> </div>
 			</div>
 		</div>
 		<div class="clearfix"> </div>
 	</div>
+	@endif
+	@endforeach
 <!-- //schedule-bottom -->
   <!-- banner-bootom-w3-agileits -->
 	<div class="banner-bootom-w3-agileits">
@@ -64,7 +67,6 @@
 		<div class="col-md-5 bb-grids bb-left-agileits-w3layouts">
         @foreach($baneer as $k => $v)
             @if($k == 7)
-			<a href="womens.html">
 			   <div class='{{$v->banner_class}}'>
 					<figure class="effect-roxy">
 							<img src='{{$v->banner_url}}' alt=" " class="img-responsive" />
@@ -74,14 +76,12 @@
 							</figcaption>
 						</figure>
 			    </div>
-			</a>
             @endif
         @endforeach
 		</div>
 		<div class="col-md-7 bb-grids bb-middle-agileits-w3layouts">
             @foreach($baneer as $k => $v)
             @if($k == 8 || $k == 9)
-		      <a href="{{$v->banner_url}}">
 		       <div class="bb-middle-agileits-w3layouts grid">
 			           <figure class="effect-roxy">
 							<img src="{{$v->banner_url}}" alt=" " class="img-responsive" />
@@ -91,7 +91,6 @@
 							</figcaption>
 						</figure>
 		        </div>
-				</a>
             @endif
             @endforeach
 		<div class="clearfix"></div>

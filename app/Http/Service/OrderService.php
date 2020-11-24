@@ -111,4 +111,12 @@ class OrderService
         $this->OrderRepository->add_logistics_buyer_data_Repository($input,$order_id,$MerchantTradeNo);
 
     }
+
+    public function create_user_address_data_Service($input,$account){
+         $this->OrderRepository->create_user_address_data_Repository($input,$account);
+
+    }
+    public function user_address_Service($account){
+       return $this->OrderRepository->user_address_Repository($account);
+    }
 }

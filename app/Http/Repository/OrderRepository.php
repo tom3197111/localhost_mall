@@ -7,6 +7,7 @@ use App\Http\Model\order_shipping;
 use App\Http\Model\order_commodity_item;
 use App\Http\Model\shippinginterface;
 use App\Http\Model\logistics_buyer_data;
+use App\Http\Model\users_address;
 class OrderRepository
 {
     protected $order;
@@ -14,7 +15,7 @@ class OrderRepository
     protected $order_commodity_item;
     protected $shippinginterface;
     protected $logistics_buyer_data;
-
+    protected $users_address;
     public function __construct()
     {
         $this->order = new Order();
@@ -22,7 +23,7 @@ class OrderRepository
         $this->order_commodity_item = new order_commodity_item();
         $this->shippinginterface = new shippinginterface();
         $this->logistics_buyer_data = new logistics_buyer_data();
-
+        $this->users_address = new users_address();
     }
     //廠商訂單編號新增
     public function Vendor_transaction_number_updata_Repository($MerchantTradeNo,$order_id){
@@ -122,7 +123,7 @@ class OrderRepository
         return $payment_number;
     }
     public function select_order_shipping_Repository($cart_id,$payment_number){
-        $payment_number = Order_shipping::where('order_id', '=', $cart_id)->update(
+        $payment_number = order_shipping::where('order_id', '=', $cart_id)->update(
            [
             'payment_number' => $payment_number->payment_number
         ]);
@@ -183,6 +184,21 @@ class OrderRepository
     public function select_logistics_buyer_data_Repository($order_id){
         $select_logistics_buyer_data_Repository=logistics_buyer_data::where('order_id','=',$order_id)->get();    
         return $select_logistics_buyer_data_Repository;
+    }
+
+    public function create_user_address_data_Repository($input,$account){
+        $account=array('account'=>$account);
+        $Address = $input['receiver_city'].'_'.$input['receiver_town'].'_'.$input['Address'].'_郵遞區號:'.$input['zipcode'];
+        $Address=array('Address'=>$Address);
+        unset($input['_token'],$input['receiver_city'],$input['receiver_town'],$input['Address'],$input['zipcode']);
+        $input= array_merge($input,$account);
+        $input= array_merge($input,$Address);
+        users_address::insert($input,$account);
+    }
+
+    public function user_address_Repository($account){
+        $users_address=users_address::where('account','=',$account)->get();
+        return $users_address;
     }
 }
 

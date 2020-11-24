@@ -1,3 +1,7 @@
+
+<head>
+	<link rel="shortcut icon" href="http://www.fishing-tackle-mall.com/localhost_MALL_BACKEND/{{$data[0]->Company_log}}" type="image/x-icon" />
+</head>
 @extends('layouts.common.home')
 
 <body>

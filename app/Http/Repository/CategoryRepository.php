@@ -29,7 +29,10 @@ class CategoryRepository
       return $categorys;
 
     }
-
+    public function get_Category_Repository(){
+        $Category =Category::all();
+        return $Category;
+    }
 
     public function create()
     {   //找出所有cate_pid=0(父級分類)

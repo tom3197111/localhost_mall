@@ -14,7 +14,8 @@ Route::get('/random/{User_Random?}', 'UserAuthController@User_Random');
 //    return "my email";
 // })->middleware('verified');
 
-//使用者
+//會員系統
+
 Route::group(['prefix' => 'user'],function(){
     Route::group(['prefix' => '/auth'],function(){
         Route::post('/user_updata','UserAuthController@user_updata');
@@ -29,6 +30,23 @@ Route::group(['prefix' => 'user'],function(){
     });
 
 });
+//在商品頁面使用會員系統
+Route::group(['prefix' => 'Product_list'],function(){
+    Route::group(['prefix' => 'user'],function(){
+        Route::group(['prefix' => '/auth'],function(){
+            Route::post('/user_updata','UserAuthController@user_updata');
+            Route::post('/Sign_up_account','UserAuthController@Sign_up_account');
+            Route::post('/Sign_in','UserAuthController@Sign_in');
+            Route::get('/Sign_out','UserAuthController@Sign_out');
+            Route::post('/Sign_up_Email','UserAuthController@Sign_up_Email');
+            Route::post('/Sign_up_phone','UserAuthController@Sign_up_phone');
+            Route::post('/Sign_up','UserAuthController@Sign_up');
+            Route::post('/user_adders_updata','UserAuthController@user_adders_updata');
+            Route::post('/forget_account','UserAuthController@forget_account');
+        });
+
+    });
+});
 //中介層 如果沒有先登錄 會返回首頁
 Route::group(['middleware' => ['user.login']], function () {
     Route::post('/add_Shopping_cart','Shopping_cartController@add_Shopping_cart');
@@ -39,5 +57,12 @@ Route::group(['middleware' => ['user.login']], function () {
     Route::post('/checkout/Ecpay','OrderController@Ecpay');
 
 });
-
-Route::post('/order_ending/ok','OrderController@order_ending');
+    Route::get('/Product_list/{id}', 'ProductController@Product_list');
+    Route::post('/Product_list', 'ProductController@Product');
+    Route::get('mens.html','commodity_listController@commodity_list');
+    Route::post('/order_ending/ok','OrderController@order_ending');
+    // Route::resource('about','aboutController');
+    Route::resource('search','searchController');
+    Route::resource('/Product_list/search','searchController');
+    Route::post('/users_address','OrderController@users_address');
+    Route::post('/delete_users_address','OrderController@delete_users_address');

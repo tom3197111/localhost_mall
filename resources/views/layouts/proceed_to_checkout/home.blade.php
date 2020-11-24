@@ -1,13 +1,7 @@
-<!--
-author: xmoban.cn
-Author URL: http://www.xmoban.cn
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
 <html>
 <head>
-<title>Elite Shoppy an Ecommerce Online Shopping Category Flat Bootstrap Responsive Website Template | Home :: xmoban.cn</title>
+<title>{{$data[0]->Company_name}}</title>
 <!--/tags -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -16,12 +10,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script type="text/javascript" src="{{asset('js/5ab83813e2.js')}}"></script>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
         function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- checkout -->
-<link rel="stylesheet" href="css/order/core-style.css">
-<!--//tags -->
+<!-- bootstrap -->
 <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script type="text/javascript" src="{{asset('js/jquery-2.1.4.min.js')}}"></script>
+<!-- jquery_session -->
+<script type="text/javascript" src="{{asset('js/JQuery_Session/jquery.session.js')}}"></script>
+<!-- order -->
+<link rel="stylesheet" type="text/css" href="{{asset('css/order/base.css')}}" />
+<link rel="stylesheet" type="text/css" href="{{asset('css/order/checkOut.css')}}" />
+<script type="text/javascript" src="{{asset('js/order/order_new.js')}}"></script>
+<!-- checkout -->
+<link rel="stylesheet" href="{{asset('css/order/core-style.css')}}">
+<!--//tags -->
 <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
-<link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
+<link href="{{asset('css/font-awesome.css')}}" rel="stylesheet" type='text/css' >
 <link href="{{asset('css/easy-responsive-tabs.css')}}" rel='stylesheet' type='text/css'/>
 <!-- alert -->
 <link href="{{asset('alertify/css/alertify.min.css')}}" rel='stylesheet' type='text/css'/>
@@ -29,8 +32,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- //for bootstrap working -->
 <link href="{{asset('css/OpenSans.css')}}" rel="stylesheet">
 <link href="{{asset('css/italic.css')}}" rel='stylesheet' type='text/css'>
-<!-- js -->
-<script type="text/javascript" src="{{asset('js/jquery-2.1.4.min.js')}}"></script>
+
 <!-- account -->
 <script type="text/javascript" src="{{asset('js/account/ajax.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/account/account.js')}}"></script>
@@ -46,6 +48,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="{{asset('js/easy-responsive-tabs.js')}}"></script>
 <!-- orer -->
 <script src="{{asset('js/order/order.js')}}"></script>
+
+
 <script>
 	$(document).ready(function () {
 	$('#horizontalTab').easyResponsiveTabs({

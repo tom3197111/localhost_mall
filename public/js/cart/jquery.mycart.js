@@ -352,7 +352,7 @@
       var _token = $('#_token').val()
       $.ajax({
           type: "post",
-          url: "/delete_Shopping_cart",
+          url: "/localhost_mall/delete_Shopping_cart",
           data:{account:account,id:id,_token:_token},
           // dataType: "json",
           success: function(res) {
@@ -384,14 +384,14 @@
         var _token = $('#_token').val()
       $.ajax({
           type: "post",
-          url: "/checkout",
+          url: "/localhost_mall/checkout",
           data:{_token:_token},
           // dataType: "json",
           success: function(res) {
              window.location.href = "/checkout";
           },
           error: function(res) {         
-            window.location.replace('http://mall.com/checkout');
+            window.location.replace('http://www.fishing-tackle-mall.com/localhost_mall/checkout');
           }
       });  
 
@@ -414,7 +414,7 @@
       $cartBadge.text(ProductManager.getTotalQuantity());
       options.afterAddOnCart(ProductManager.getAllProducts(), ProductManager.getTotalPrice(), ProductManager.getTotalQuantity());
       if(account!=''){
-          var url = "/add_Shopping_cart"
+          var url = "/localhost_mall/add_Shopping_cart"
           var _token = $('#_token').val();
           $.ajax({
               type: "post",

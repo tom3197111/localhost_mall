@@ -18,7 +18,7 @@ $(function () {
     if(account !=''){
             $.ajax({
             type: "post",
-            url: '/select_Shopping_cart',
+            url: '/localhost_mall/select_Shopping_cart',
             data:{account:account,_token:_token},
             dataType: "json",
             async:false,

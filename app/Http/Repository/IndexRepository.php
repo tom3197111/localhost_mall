@@ -29,4 +29,9 @@ class IndexRepository
         return $commodity;
     }
 
+    public function search_Commodity_Repository($Category_and_commodity){
+        $commodity_data = Commodity::where('cate_id','=',$Category_and_commodity['Category_num'])->where('art_title','like','%'.$Category_and_commodity['search'].'%')->get();
+        return $commodity_data;
+    }
+
 }

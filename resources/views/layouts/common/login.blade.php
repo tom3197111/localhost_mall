@@ -20,7 +20,22 @@
 <div class="header-bot">
 	<div class="header-bot_inner_wthreeinfo_header_mid">
 		<div class="col-md-4 header-middle">
-			<form action="#" method="post">
+			<form action="search" method="post">
+				{{ csrf_field() }}
+					<select name="Category_num" style=" background:#dddd;border:  1px solid #dddd;">
+						<option >請選擇要搜尋的分類</option>
+					@foreach($Category as $value)
+						@if($value->cate_pid == 0)
+						  	<optgroup label="{{$value->cate_name}}">
+								@foreach($Category as $s =>$x)
+									@if($value->cate_id==$x->cate_pid)
+										<option value="{{$x->cate_id}}">{{$x->cate_name}}</option>
+									@endif
+								@endforeach		
+							</optgroup>						
+						@endif
+                    @endforeach					
+                    </select>
 					<input type="search" name="search" placeholder="搜尋商品" required="">
 					<input type="submit" value=" ">
 				<div class="clearfix"></div>
@@ -63,7 +78,7 @@
 	<div class="container">
 		<div class="top_nav_left">
 			<nav class="navbar navbar-default">
-			  <div class="container-fluid">
+			  <div class="container-fluid"> 
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
 				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -76,7 +91,8 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 				  <ul class="nav navbar-nav menu__list">
-					<li class=" menu__item"><a class="menu__link" href="about.html">關於</a></li>
+				  	<li class=" menu__item"><a class="menu__link" href="/localhost_mall">首頁</a></li>
+					<!-- <li class=" menu__item"><a class="menu__link" href="/localhost_mall/about">關於</a></li> -->
                     @foreach($Category as $k=>$v)
 
                     @if( $v->cate_pid == 0)
@@ -86,7 +102,7 @@
 							<ul class="dropdown-menu multi-column columns-3">
 								<div class="agile_inner_drop_nav_info">
 									<div class="col-sm-6 multi-gd-img1 multi-gd-text ">
-										<a href="mens.html"><img src="{{asset('images/top2.jpg')}}" alt=" "/></a>
+										<a href="mens.html"><img src="http://www.fishing-tackle-mall.com/localhost_MALL_BACKEND/{{$v->file_upload}}" alt=" "/></a>
 									</div>
 									<div class="col-sm-3 multi-gd-img">
 										<ul class="multi-column-dropdown">
@@ -95,7 +111,7 @@
 											<li><a href="mens.html">{{$value->_cate_name}}</a></li>
                                             @endif
                                         @endforeach
-{{-- 											<li><a href="mens.html">Wallets</a></li>
+{{-- 										<li><a href="mens.html">Wallets</a></li>
 											<li><a href="mens.html">Footwear</a></li>
 											<li><a href="mens.html">Watches</a></li>
 											<li><a href="mens.html">Accessories</a></li>
@@ -108,9 +124,6 @@
 							</ul>
 					</li>
                     @endforeach
-
-
-					<li class=" menu__item"><a class="menu__link" href="contact.html">Contact</a></li>
 				  </ul>
 				</div>
 			  </div>

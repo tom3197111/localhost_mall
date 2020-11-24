@@ -1,5 +1,6 @@
 $(function () {
 
+     
     var tr_length = $('.table .tableHorizontalBottomLine').length; //tr 長度
     var TotalPrice = 0
     var post_fee = 0
@@ -30,7 +31,6 @@ $(function () {
       $('#bcm').hide()
       $('#TotalPrice').text(post_fee)
     }
-console.log(!isNaN(post_fee))
 
 //選項卡
 $('#Home').click(function(){
@@ -78,7 +78,7 @@ $(".quantity").click(function(){
     // console.log(TotalPrice)
     $.ajax({
         type: "post",
-        url: "/update_Shopping_cart",
+        url: "/localhost_mall/update_Shopping_cart",
         data:{total_fee:total_fee,quantity:quantity,id:id,account:account,_token:_token},
         // dataType: "json",
         success: function(res) {
@@ -101,7 +101,7 @@ $(".remove").click(function(){
   $(this).closest('.tableHorizontalBottomLine').remove()
     $.ajax({
         type: "post",
-        url: "/delete_Shopping_cart",
+        url: "/localhost_mall/delete_Shopping_cart",
         data:{id:id,account:account,_token:_token},
         // dataType: "json",
         success: function(res) {
@@ -170,7 +170,7 @@ $(".remove").click(function(){
           if(typeof(LogisticsSubType)!= "undefined" &&receiver_name!=''&&receiver_mobile!=''){
           $.ajax({
               type: "post",
-              url: "/checkout/Ecpay",
+              url: "/localhost_mall/checkout/Ecpay",
               // async:false,
               data:{
                account:account,
@@ -214,7 +214,7 @@ $(".remove").click(function(){
         var _token = $('#_token').val();
           $.ajax({
               type: "post",
-              url: "/checkout/Ecpay",
+              url: "/localhost_mall/checkout/Ecpay",
               // async:false,
               data:{account:account,receiver_name:receiver_name,receiver_mobile:receiver_mobile,buy_message:buy_message,receiver_address:receiver_address,_token:_token},
               // dataType: "HTML",
@@ -222,12 +222,12 @@ $(".remove").click(function(){
                 $("#test").html(res);
               },
               error: function(res) {
-                alert("b")
               }
           });
       }      
-  });
 
+
+  });
 
 
 // //物流checkbox

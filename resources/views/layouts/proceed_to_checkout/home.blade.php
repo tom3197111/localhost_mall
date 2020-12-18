@@ -20,6 +20,7 @@
 <link rel="stylesheet" type="text/css" href="{{asset('css/order/base.css')}}" />
 <link rel="stylesheet" type="text/css" href="{{asset('css/order/checkOut.css')}}" />
 <script type="text/javascript" src="{{asset('js/order/order_new.js')}}"></script>
+<script src="{{asset('js/order/order.js')}}"></script>
 <!-- checkout -->
 <link rel="stylesheet" href="{{asset('css/order/core-style.css')}}">
 <!--//tags -->
@@ -47,7 +48,7 @@
 <!-- script for responsive tabs -->
 <script src="{{asset('js/easy-responsive-tabs.js')}}"></script>
 <!-- orer -->
-<script src="{{asset('js/order/order.js')}}"></script>
+
 
 
 <script>

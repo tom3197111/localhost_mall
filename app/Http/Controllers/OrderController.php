@@ -36,14 +36,15 @@ class OrderController extends Controller
     }	
 
     public function users_address(){
-        
+
         if (Session::has('account'))
         {   
             $input = Request()->all();
             $account = Session::get('account');
         }
-        $this->OrderService->create_user_address_data_Service($input,$account);
-        return redirect('checkout');
+        $data = $this->OrderService->create_user_address_data_Service($input,$account);
+        $user_address=$this->OrderService->user_address_Service($account);
+        echo json_encode($user_address);
     }
 
     public function order_creation(){
@@ -125,7 +126,7 @@ class OrderController extends Controller
         $obj->Send['TotalAmount']       = $TotalAmount;                               //交易金額
         $obj->Send['TradeDesc']         = "good to drink" ;                          //交易描述
         $obj->Send['ChoosePayment']     = ECPayMethod::ALL ;                  //付款方式:全功能
-        $obj->Send['ClientBackURL']     = 'http://mall.com/' ;   //Client 端返回的按鈕連結
+        $obj->Send['ClientBackURL']     = 'http://https.fishing-tackle-mall.com/localhost_mall' ;   //Client 端返回的按鈕連結
         // $obj->Send['ItemURL']     = 'https://c9eee1dbec44.ngrok.io' ;   //商品銷售網址
         // $obj->Send['Remark']     = 'https://c9eee1dbec44.ngrok.io' ;   //商品銷售網址
         // $obj->Send['Language']     = 'JPN' ;   //語系設定
@@ -257,9 +258,10 @@ public function order_ending()
    }
 
         // 接收到資訊回應綠界
-    }
+}
 public function delete_users_address(){
-     $input = Request()->all();
+ $input =Request()->all();
+ return $this->OrderService->delete_users_address_Service($input);
 }
 
 }

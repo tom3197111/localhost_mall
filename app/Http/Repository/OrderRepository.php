@@ -42,7 +42,7 @@ class OrderRepository
     {
 
         $affectedRows = Order::where('payment_number', '=', $payment_number)->update(
-           [
+         [
             'post_fee'=>$post_fee,
             'payment' => $payment,
             'payment_type'=>$payment_type,
@@ -55,7 +55,7 @@ class OrderRepository
     public function order_shipping_data_Repository($input,$order_id,$MerchantTradeNo){
         if(!$this->select_order_shipping_order_id($order_id)->isempty()){
             order_shipping::where('order_id', '=', $order_id)->update(
-               [
+             [
                 'account'=>$input['account'],
                 'receiver_name' =>$input['receiver_name'],
                 'receiver_mobile'=>$input['receiver_mobile'],
@@ -66,9 +66,9 @@ class OrderRepository
             ]);
             Order::where('order_id', '=', $order_id)->update(
                 [
-                 'buy_message'=>$input['buy_message'],
-                 'post_fee'=>$input['post_fee']
-                 ]);
+                   'buy_message'=>$input['buy_message'],
+                   'post_fee'=>$input['post_fee']
+               ]);
         }else{
             $order_shipping = new order_shipping;
             $order_shipping->order_id = $order_id;
@@ -83,9 +83,9 @@ class OrderRepository
 
             Order::where('order_id', '=', $order_id)->update(
                 [
-                 'buy_message'=>$input['buy_message'],
-                 'post_fee'=>$input['post_fee']
-                 ]);
+                   'buy_message'=>$input['buy_message'],
+                   'post_fee'=>$input['post_fee']
+               ]);
 
         }
         return "Repository_ok";
@@ -96,21 +96,21 @@ class OrderRepository
     public function insert_order_commodity_item($input,$payment_number){
         foreach ($input as $key =>$v) {
             $data = array(
-                        'order_id' => $input[$key]['order_id'], 
-                        'payment_number' => $payment_number->payment_number, 
-                        'commodity_id' => $input[$key]['id'],
-                        'commodity_num' => $input[$key]['quantity'], 
-                        'commodity_name' => $input[$key]['name'], 
-                        'price' => $input[$key]['price'],
-                        'total_fee' => $input[$key]['total_fee'],
-                        );
+                'order_id' => $input[$key]['order_id'], 
+                'payment_number' => $payment_number->payment_number, 
+                'commodity_id' => $input[$key]['id'],
+                'commodity_num' => $input[$key]['quantity'], 
+                'commodity_name' => $input[$key]['name'], 
+                'price' => $input[$key]['price'],
+                'total_fee' => $input[$key]['total_fee'],
+            );
             try{
                 order_commodity_item::insert($data);     
             }catch (\Exception $e){
                 return $e;
             }
         }   return "ok";
-       
+
     }
     // public function order_TotalPrice()
     // {
@@ -124,7 +124,7 @@ class OrderRepository
     }
     public function select_order_shipping_Repository($cart_id,$payment_number){
         $payment_number = order_shipping::where('order_id', '=', $cart_id)->update(
-           [
+         [
             'payment_number' => $payment_number->payment_number
         ]);
     }
@@ -148,7 +148,9 @@ class OrderRepository
     }
 
     public function add_logistics_buyer_data_Repository($input,$order_id,$MerchantTradeNo){
-        if($this->select_logistics_buyer_data_Repository($order_id)->isEmpty()){
+        //到店取貨
+        if($input['type']=='store'){
+            if($this->select_logistics_buyer_data_Repository($order_id)->isEmpty()){
                 $data = array(
                     'Store' => $input['LogisticsSubType'], 
                     'CVSStoreID' => $input['CVSStoreID'], 
@@ -157,26 +159,59 @@ class OrderRepository
                     'CVSTelephone' => $input['CVSTelephone'], 
                     'order_id' => $order_id,
                     'payment_number'=>$MerchantTradeNo
-                    );
+                );
                 try{
                     logistics_buyer_data::insert($data);     
                 }catch (\Exception $e){
                     return $e;
                 }
 
-        }else{
+            }else{
 
                 $logistics_buyer_data = logistics_buyer_data::where('order_id', '=', $order_id)->update(
-                   [
+                 [
                     'Store' => $input['LogisticsSubType'],
                     'CVSStoreID' => $input['CVSStoreID'],
                     'CVSStoreName' => $input['CVSStoreName'],
                     'CVSAddress' => $input['CVSAddress'],
                     'CVSTelephone' => $input['CVSTelephone'],
                     'payment_number' => $MerchantTradeNo
-                    ]);
+                ]);
                 // return $logistics_buyer_data;
+            }
+        //宅配
+        }elseif ($input['type']=='Home') {
+            if($this->select_logistics_buyer_data_Repository($order_id)->isEmpty()){
+                $data = array(
+                    'Store' => $input['LogisticsSubType'], 
+                    // 'CVSStoreID' => $input['CVSStoreID'], 
+                    // 'CVSStoreName' => $input['CVSStoreName'],
+                    // 'CVSAddress' => $input['CVSAddress'], 
+                    // 'CVSTelephone' => $input['CVSTelephone'], 
+                    'order_id' => $order_id,
+                    'payment_number'=>$MerchantTradeNo
+                );
+                try{
+                    logistics_buyer_data::insert($data);     
+                }catch (\Exception $e){
+                    return $e;
+                }
+
+            }else{
+
+                $logistics_buyer_data = logistics_buyer_data::where('order_id', '=', $order_id)->update(
+                 [
+                    'Store' => $input['LogisticsSubType'],
+                    // 'CVSStoreID' => $input['CVSStoreID'],
+                    // 'CVSStoreName' => $input['CVSStoreName'],
+                    // 'CVSAddress' => $input['CVSAddress'],
+                    // 'CVSTelephone' => $input['CVSTelephone'],
+                    'payment_number' => $MerchantTradeNo
+                ]);
+                // return $logistics_buyer_data;
+            }
         }
+
 
 
     }
@@ -186,19 +221,26 @@ class OrderRepository
         return $select_logistics_buyer_data_Repository;
     }
 
-    public function create_user_address_data_Repository($input,$account){
-        $account=array('account'=>$account);
+    public function create_user_address_data_Repository($input,$account,$store){
+     $account=array('account'=>$account);
+     if($store==0){
         $Address = $input['receiver_city'].'_'.$input['receiver_town'].'_'.$input['Address'].'_郵遞區號:'.$input['zipcode'];
         $Address=array('Address'=>$Address);
         unset($input['_token'],$input['receiver_city'],$input['receiver_town'],$input['Address'],$input['zipcode']);
-        $input= array_merge($input,$account);
         $input= array_merge($input,$Address);
-        users_address::insert($input,$account);
     }
+    $input= array_merge($input,$account);
+    users_address::insert($input,$account);
+}
 
-    public function user_address_Repository($account){
-        $users_address=users_address::where('account','=',$account)->get();
-        return $users_address;
-    }
+public function user_address_Repository($account){
+    $users_address=users_address::where('account','=',$account)->get();
+    return $users_address;
+}
+
+function delete_users_address_Repository($input){
+    $delete = users_address::where('id','=',$input['id'])->delete();
+    return $delete;
+}
 }
 

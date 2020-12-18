@@ -54,7 +54,7 @@ class OrderService
         //物流單號
         //待補
         $order_CreditCard = $this->OrderRepository->order_CreditCard_Repository($payment_number,$payment,$payment_type,$status,$payment_time,$end_time,$post_fee);
-         return $order_CreditCard;
+        return $order_CreditCard;
     }
     // public function order_Total_Price($input)
     // {   
@@ -92,31 +92,37 @@ class OrderService
     }
 
     public function shippinginterface_Service(){
-         $shippinginterface = $this->OrderRepository->shippinginterface_Repository();
-         return $shippinginterface;
-    }
+     $shippinginterface = $this->OrderRepository->shippinginterface_Repository();
+     return $shippinginterface;
+ }
 
-    public function logo_img($Logistics){
-        $LogisticsSubType=$Logistics['LogisticsSubType'];
-        $shippinginterface = $this->OrderRepository->shippinginterface_Repository();
-        foreach ($shippinginterface as $key => $value) {
-            if($value['LogisticsType']==$LogisticsSubType){
-                return $value;
-            }
+ public function logo_img($Logistics){
+    $LogisticsSubType=$Logistics['LogisticsSubType'];
+    $shippinginterface = $this->OrderRepository->shippinginterface_Repository();
+    foreach ($shippinginterface as $key => $value) {
+        if($value['LogisticsType']==$LogisticsSubType){
+            return $value;
         }
     }
+}
 
-    public function add_logistics_buyer_data_Service($input,$order,$MerchantTradeNo){
-        $order_id=$order[0]['order_id'];
-        $this->OrderRepository->add_logistics_buyer_data_Repository($input,$order_id,$MerchantTradeNo);
+public function add_logistics_buyer_data_Service($input,$order,$MerchantTradeNo){
+    $order_id=$order[0]['order_id'];
+    $this->OrderRepository->add_logistics_buyer_data_Repository($input,$order_id,$MerchantTradeNo);
 
-    }
+}
 
-    public function create_user_address_data_Service($input,$account){
-         $this->OrderRepository->create_user_address_data_Repository($input,$account);
+public function create_user_address_data_Service($input,$account){
+    $store=$input['store'];
+    parse_str($input['data'],$input);
 
-    }
-    public function user_address_Service($account){
-       return $this->OrderRepository->user_address_Repository($account);
-    }
+    $this->OrderRepository->create_user_address_data_Repository($input,$account,$store);
+}
+public function user_address_Service($account){
+    return $this->OrderRepository->user_address_Repository($account);
+}
+
+public function delete_users_address_Service($input){
+    return $this->OrderRepository->delete_users_address_Repository($input);
+}
 }
